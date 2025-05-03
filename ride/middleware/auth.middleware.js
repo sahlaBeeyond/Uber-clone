@@ -2,7 +2,11 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 
 export const userAuth = async (req, res, next) => {
-    const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+    // const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+    const token =
+    req.cookies.token ||
+    req.headers.authorization?.split(" ")[1] ||
+    req.body.token;
     console.log("Token from request:", token);
     
     if (!token) {
@@ -11,6 +15,8 @@ export const userAuth = async (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         console.log("Decoded token:", decoded);
+        console.log(process.env.BASE_URL);
+        
         const response=await axios.get(`${process.env.BASE_URL}/user/profile`,{
             headers: {
                 Authorization: `Bearer ${token}`

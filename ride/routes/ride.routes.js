@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import { userAuth } from '../middleware/auth.middleware';
-import { createRide } from '../controller/ride.controller';
+import { userAuth } from '../middleware/auth.middleware.js';
+import { createRide } from '../controller/ride.controller.js';
 
 
 

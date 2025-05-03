@@ -1,7 +1,36 @@
 services:
+
+  # gateway:
+  #   build: ./gateway
+  #   command: npm run dev
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./gateway
+  #         target: /app
+  #         ignore:
+  #           - node_modules/
+  #       - action: rebuild
+  #         path: ./gateway/package.json
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on:
+  #     - user
+  #     - ride
+  #     - captain
+
   ride:
     build: ./ride
     command: npm run dev
+    develop:
+      watch:
+        - action: sync
+          path: ./ride
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./ride/package.json
     ports:
       - "5003:5003"
     env_file:
@@ -13,6 +42,15 @@ services:
   user:
     build: ./user
     command: npm run dev
+    develop:
+      watch:
+        - action: sync
+          path: ./user
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./user/package.json
     ports:
       - "5001:5001"
     env_file:
@@ -24,6 +62,15 @@ services:
   captain:
     build: ./captain
     command: npm run dev
+    develop:
+      watch:
+        - action: sync
+          path: ./captain
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./captain/package.json
     ports:
       - "5002:5002"
     env_file:

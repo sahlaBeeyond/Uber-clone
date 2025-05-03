@@ -1,5 +1,5 @@
-import Ride from "../model/ride.model";
-import { publishRideEvent } from "../services/ride.services";
+import Ride from "../model/ride.model.js";
+import { publishRideEvent } from "../services/ride.services.js";
 
 
 export const createRide = async (req, res) => {

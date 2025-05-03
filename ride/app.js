@@ -5,13 +5,12 @@ const app=express()
 import connectDB from './db/db.js'
 connectDB()
 import rideRoutes from './routes/ride.routes.js'
-// import UserRoutes from './routes/user.routes.js'
-// import cookieParser from 'cookie-parser'
+import cookieParser from 'cookie-parser'
 
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-// app.use(cookieParser())
+app.use(cookieParser())
 
 
 app.use('/',rideRoutes)

@@ -1,4 +1,4 @@
-import { kafka } from "../utils/kafka";
+import { kafka } from "../utils/kafka.js";
 const producer = kafka.producer();
 
 export const publishRideEvent=async (topic, payload) => {
